@@ -35,7 +35,8 @@ public class MainActivity2 extends AppCompatActivity {
     public static double lat,lng,heading;
     public static double homeLat, homeLng;
     public static double gotoLat, gotoLng;
-    public static boolean gotoCheck, missionCheck;
+    public static double x,y,r;
+    public static boolean gotoCheck, missionCheck, noflyzoneCheck, d_noflyzone;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,11 +45,7 @@ public class MainActivity2 extends AppCompatActivity {
         getSupportActionBar().hide();
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebChromeClient(new WebChromeClient());
         webView.loadUrl("file:///android_asset/www/map.html");
-//        webView.loadDataWithBaseURL("file:///android_asset/www/","jsproxy.js","text/html","UTF-8",null);
-//        webView.loadDataWithBaseURL("file:///android_asset/www/","map.js","text/html","UTF-8",null);
-//        webView.loadDataWithBaseURL("file:///android_asset/www/","uav.js","text/html","UTF-8",null);
 
         try {
             mqttClient = new MqttClient("tcp://106.253.56.122:1883", MqttClient.generateClientId(), null);
@@ -80,6 +77,8 @@ public class MainActivity2 extends AppCompatActivity {
                                 // goto 인지 체크
                                 gotoCheck = jsonObject.getBoolean("goto_check");
                                 missionCheck = jsonObject.getBoolean("mission_check");
+                                noflyzoneCheck = jsonObject.getBoolean("noflyzone_check");
+                                d_noflyzone = jsonObject.getBoolean("d_noflyzone");
                                 if(gotoCheck){
                                     gotoLng = jsonObject.getDouble("gotoLng");
                                     gotoLat = jsonObject.getDouble("gotoLat");
@@ -87,14 +86,23 @@ public class MainActivity2 extends AppCompatActivity {
                                     json.put("lat",gotoLat);
                                     json.put("lng",gotoLng);
                                     webView.loadUrl("javascript:jsproxy.gotoStart("+json.toString()+")");
-                                    Log.d("111111",json.toString());
                                 }
 
                                 // GCS에서 Mission Download시 미션 받아오기
-                                JSONArray jsonArray = jsonObject.getJSONArray("waypoints");
-                                if(jsonArray.length() > 0) {
+                                if(missionCheck){
+                                    JSONArray jsonArray = jsonObject.getJSONArray("android_waypoints");
+                                    System.out.println(jsonArray.toString()+"   11111111");
                                     webView.loadUrl("javascript:jsproxy.setMission("+jsonArray.toString()+")");
-                                    System.out.println(jsonArray.get(0).toString());
+                                }
+
+                                if(noflyzoneCheck){
+                                    x = jsonObject.getDouble("x");
+                                    y = jsonObject.getDouble("y");
+                                    r = jsonObject.getDouble("r");
+                                    webView.loadUrl("javascript:jsproxy.makeNoFlyZone("+x+","+y+","+r+")");
+                                }
+                                if(d_noflyzone){
+                                    webView.loadUrl("javascript:jsproxy.deleteNoFlyZone()");
                                 }
                                 webView.loadUrl("javascript:jsproxy.setUavLocation("+lat+","+lng+","+heading+")");
                                 webView.loadUrl("javascript:jsproxy.setHomeLocation("+homeLat+","+homeLng+")");

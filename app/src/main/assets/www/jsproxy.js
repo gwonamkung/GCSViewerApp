@@ -74,9 +74,7 @@ var jsproxy = {
 
 	gotoStart: function(location) {
 		try {
-			location = JSON.stringify(location);
-			jsproxy.java.gotoStart(location);
-			map.uav.missionStop();
+			map.uav.gotoStart(location);
 		} catch(err) {
 			console.log(">> [jsproxy.gotoStart()] " + err);
 		}
@@ -158,8 +156,7 @@ var jsproxy = {
 	//-------------------------------------------------------
 	setMission: function(strMessionArr) {
 		try {
-			var missionArr = JSON.parse(strMessionArr);
-			map.uav.setMission(missionArr);
+			map.uav.setMission(strMessionArr);
 		} catch(err) {
 			console.log(">> [jsproxy.setMission()] " + err);
 		}

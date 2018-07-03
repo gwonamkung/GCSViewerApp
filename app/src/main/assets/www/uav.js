@@ -229,7 +229,7 @@ function UAV() {
 					  scale: 12,
 					  labelOrigin: new google.maps.Point(21,14)
 					},
-					draggable: true,
+					draggable: false,
 					optimized: false
 				});
 				marker.kind = kind;
@@ -237,9 +237,6 @@ function UAV() {
 				marker.setAnimation(google.maps.Animation.DROP);
 				this.missionMarkers.push(marker);
 				var self = this;
-				marker.addListener('drag', function() {
-					self.drawMissionPath();
-				});
 			} 
 			
 			else if(kind == "waypoint") {
@@ -257,7 +254,7 @@ function UAV() {
 					  scale: 12,
 					  labelOrigin: new google.maps.Point(14,14)
 					},
-					draggable: true,
+					draggable: false,
 					optimized: false
 				});
 				marker.kind = kind;
@@ -265,9 +262,6 @@ function UAV() {
 				marker.setAnimation(google.maps.Animation.DROP);
 				this.missionMarkers.push(marker);
 				var self = this;
-				marker.addListener('drag', function() {
-					self.drawMissionPath();
-				});
 			} 
 			
 			else if(kind == "rtl") {
@@ -283,7 +277,7 @@ function UAV() {
 				marker = new google.maps.Marker({
 					map: map.googlemap,
 					position: {lat:lat, lng:lng},
-					draggable: true,
+					draggable: false,
 					optimized: false
 				});
 				marker.kind = kind;
@@ -303,7 +297,6 @@ function UAV() {
 					this.missionMarkers[i].setLabel({color: '#000', fontSize: '12px', fontWeight: '600', text: String(i+1)});
 				}
 			}
-			
 			this.drawMissionPath();
 		} catch(err) {
 			console.log(">> [uav.makeMissionMark()] " + err);
@@ -323,7 +316,6 @@ function UAV() {
 			});
 			this.missionStop();
 			this.rtlStop();
-			jsproxy.gotoStart(location);
 		} catch(err) {
 			console.log(">> [uav.gotoStart()] " + err);
 		}
@@ -451,7 +443,7 @@ function UAV() {
 				map: map.googlemap,
 				position: {lat:lat, lng:lng},
 				icon: image,
-				draggable: true,
+				draggable: false,
 				optimized: false
 			});
 			var self = this;

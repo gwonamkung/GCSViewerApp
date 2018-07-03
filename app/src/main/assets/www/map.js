@@ -164,7 +164,7 @@ var map = {
 
 	// 1초마다 uav를 그려준다.
 	animation: {
-		count: 1,
+//		count: 1,
 		start: function() {
 			setInterval(function() {
 				try {
@@ -173,12 +173,12 @@ var map = {
 						map.uav.drawHeadingLine();
 						map.uav.drawDestLine();
 						
-						if(map.animation.count >= 3) { 
-							map.googlemap.panTo(map.uav.currLocation);
-							map.animation.count = 1;
-						} else {
-							map.animation.count += 1;
-						}
+//						if(map.animation.count >= 3) {
+//							map.googlemap.panTo(map.uav.currLocation);
+//							map.animation.count = 1;
+//						} else {
+//							map.animation.count += 1;
+//						}
 					}
 					//window.requestAnimationFrame(map.uav.animation.start);
 				} catch(err) {

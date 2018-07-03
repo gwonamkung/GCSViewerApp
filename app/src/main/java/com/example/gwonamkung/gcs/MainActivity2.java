@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -33,10 +34,12 @@ public class MainActivity2 extends AppCompatActivity {
     WebView webView;
     Context context;
     MqttClient mqttClient;
-    public static double lat,lng,heading;
+    Toast toast;
+    public static String message2;
+    public static double lat, lng, heading;
     public static double homeLat, homeLng;
     public static double gotoLat, gotoLng;
-    public static double x,y,r;
+    public static double x, y, r;
     public static boolean gotoCheck, missionCheck, noflyzoneCheck, d_noflyzone, mission_start_check;
 
     @Override
@@ -47,7 +50,8 @@ public class MainActivity2 extends AppCompatActivity {
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("file:///android_asset/www/map.html");
-
+        toast = Toast.makeText(this, message2, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.TOP, 0, 70);
         try {
             mqttClient = new MqttClient("tcp://106.253.56.122:1883", MqttClient.generateClientId(), null);
             mqttClient.setCallback(new MqttCallback() {
@@ -64,9 +68,8 @@ public class MainActivity2 extends AppCompatActivity {
                         @Override
                         public void run() {
                             new Fragment2().setJson(jsonObject.toString());
-                            new Fragment1().Companion.str(jsonObject.toString());
+//                            new Fragment1().Companion.str(jsonObject.toString());
                             try {
-                                Log.d("111111",jsonObject.getString("statustext"));
                                 // 이동 방향 및 Heading
                                 lat = jsonObject.getDouble("latitude");
                                 lng = jsonObject.getDouble("longitude");
@@ -82,37 +85,44 @@ public class MainActivity2 extends AppCompatActivity {
                                 noflyzoneCheck = jsonObject.getBoolean("noflyzone_check");
                                 d_noflyzone = jsonObject.getBoolean("d_noflyzone");
                                 mission_start_check = jsonObject.getBoolean("mission_do_check");
-                                if(gotoCheck){
+
+                                message2 = jsonObject.getString("statustext");
+                                if(!message2.equals("")) {
+                                    System.out.println("123123213123    bb b   "+message2);
+                                    toast.setText(message2);
+                                    toast.show();
+                                }
+                                if (gotoCheck) {
                                     gotoLng = jsonObject.getDouble("gotoLng");
                                     gotoLat = jsonObject.getDouble("gotoLat");
                                     JSONObject json = new JSONObject();
-                                    json.put("lat",gotoLat);
-                                    json.put("lng",gotoLng);
-                                    webView.loadUrl("javascript:jsproxy.gotoStart("+json.toString()+")");
+                                    json.put("lat", gotoLat);
+                                    json.put("lng", gotoLng);
+                                    webView.loadUrl("javascript:jsproxy.gotoStart(" + json.toString() + ")");
                                 }
 
                                 // GCS에서 Mission Download시 미션 받아오기
-                                if(missionCheck){
+                                if (missionCheck) {
                                     JSONArray jsonArray = jsonObject.getJSONArray("android_waypoints");
-                                    System.out.println(jsonArray.toString()+"   11111111");
-                                    webView.loadUrl("javascript:jsproxy.setMission("+jsonArray.toString()+")");
+                                    System.out.println(jsonArray.toString() + "   11111111");
+                                    webView.loadUrl("javascript:jsproxy.setMission(" + jsonArray.toString() + ")");
                                 }
 
-                                if(noflyzoneCheck){
+                                if (noflyzoneCheck) {
                                     x = jsonObject.getDouble("x");
                                     y = jsonObject.getDouble("y");
                                     r = jsonObject.getDouble("r");
-                                    webView.loadUrl("javascript:jsproxy.makeNoFlyZone("+x+","+y+","+r+")");
+                                    webView.loadUrl("javascript:jsproxy.makeNoFlyZone(" + x + "," + y + "," + r + ")");
                                 }
-                                if(d_noflyzone){
+                                if (d_noflyzone) {
                                     webView.loadUrl("javascript:jsproxy.deleteNoFlyZone()");
                                 }
-                                if(mission_start_check){
+                                if (mission_start_check) {
                                     webView.loadUrl("javascript:jsproxy.missionStart()");
                                 }
-                                webView.loadUrl("javascript:jsproxy.setNextWaypointNo("+jsonObject.getInt("next_waypoint_no")+")");
-                                webView.loadUrl("javascript:jsproxy.setUavLocation("+lat+","+lng+","+heading+")");
-                                webView.loadUrl("javascript:jsproxy.setHomeLocation("+homeLat+","+homeLng+")");
+                                webView.loadUrl("javascript:jsproxy.setNextWaypointNo(" + jsonObject.getInt("next_waypoint_no") + ")");
+                                webView.loadUrl("javascript:jsproxy.setUavLocation(" + lat + "," + lng + "," + heading + ")");
+                                webView.loadUrl("javascript:jsproxy.setHomeLocation(" + homeLat + "," + homeLng + ")");
                                 //setHomeLocation
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -137,8 +147,9 @@ public class MainActivity2 extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
 
         context = this;
-        tabLayout.addTab(tabLayout.newTab().setText("1"));
-        tabLayout.addTab(tabLayout.newTab().setText("2"));
+        tabLayout.addTab(tabLayout.newTab().setText("Data"));
+        tabLayout.addTab(tabLayout.newTab().setText("Detail Data"));
+        tabLayout.addTab(tabLayout.newTab().setText("Log"));
         viewPager.setAdapter(new FragmentAdapterJ(getSupportFragmentManager()));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

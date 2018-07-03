@@ -44,7 +44,7 @@ public class MainActivity2 extends AppCompatActivity {
         getSupportActionBar().hide();
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebChromeClient(new WebChromeClient());
+//        webView.setWebChromeClient(new WebChromeClient());
         webView.loadUrl("file:///android_asset/www/map.html");
 //        webView.loadDataWithBaseURL("file:///android_asset/www/","jsproxy.js","text/html","UTF-8",null);
 //        webView.loadDataWithBaseURL("file:///android_asset/www/","map.js","text/html","UTF-8",null);

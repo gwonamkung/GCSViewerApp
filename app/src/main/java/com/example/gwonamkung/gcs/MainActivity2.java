@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -36,7 +37,7 @@ public class MainActivity2 extends AppCompatActivity {
     public static double homeLat, homeLng;
     public static double gotoLat, gotoLng;
     public static double x,y,r;
-    public static boolean gotoCheck, missionCheck, noflyzoneCheck, d_noflyzone;
+    public static boolean gotoCheck, missionCheck, noflyzoneCheck, d_noflyzone, mission_start_check;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class MainActivity2 extends AppCompatActivity {
                             new Fragment2().setJson(jsonObject.toString());
                             new Fragment1().Companion.str(jsonObject.toString());
                             try {
+                                Log.d("111111",jsonObject.getString("statustext"));
                                 // 이동 방향 및 Heading
                                 lat = jsonObject.getDouble("latitude");
                                 lng = jsonObject.getDouble("longitude");
@@ -79,6 +81,7 @@ public class MainActivity2 extends AppCompatActivity {
                                 missionCheck = jsonObject.getBoolean("mission_check");
                                 noflyzoneCheck = jsonObject.getBoolean("noflyzone_check");
                                 d_noflyzone = jsonObject.getBoolean("d_noflyzone");
+                                mission_start_check = jsonObject.getBoolean("mission_do_check");
                                 if(gotoCheck){
                                     gotoLng = jsonObject.getDouble("gotoLng");
                                     gotoLat = jsonObject.getDouble("gotoLat");
@@ -104,6 +107,10 @@ public class MainActivity2 extends AppCompatActivity {
                                 if(d_noflyzone){
                                     webView.loadUrl("javascript:jsproxy.deleteNoFlyZone()");
                                 }
+                                if(mission_start_check){
+                                    webView.loadUrl("javascript:jsproxy.missionStart()");
+                                }
+                                webView.loadUrl("javascript:jsproxy.setNextWaypointNo("+jsonObject.getInt("next_waypoint_no")+")");
                                 webView.loadUrl("javascript:jsproxy.setUavLocation("+lat+","+lng+","+heading+")");
                                 webView.loadUrl("javascript:jsproxy.setHomeLocation("+homeLat+","+homeLng+")");
                                 //setHomeLocation

@@ -21,6 +21,7 @@ class Fragment1 : Fragment() {
         aspeed_text = view.aspeed_text
         gspeed_text = view.gspeed_text
         time_text = view.time_text
+        battery_text = view.battery_text
         return view
     }
 
@@ -30,6 +31,7 @@ class Fragment1 : Fragment() {
         var aspeed_text : TextView? = null
         var gspeed_text : TextView? = null
         var time_text : TextView? = null
+        var battery_text : TextView? = null
         fun json(str : JSONObject){
             try {
                 mode_text!!.text = str.getString("mode")
@@ -37,6 +39,7 @@ class Fragment1 : Fragment() {
                 aspeed_text!!.text = ("" + str.getDouble("airspeed")).substring(0,6)
                 gspeed_text!!.text = ("" + str.getDouble("groundspeed")).substring(0,6)
                 time_text!!.text = "타임 추가해야함"
+                battery_text!!.text = str.getDouble("battery_voltage").toString()
             }catch (e: Exception){}
         }
     }

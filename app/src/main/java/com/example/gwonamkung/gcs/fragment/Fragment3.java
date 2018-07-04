@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import com.example.gwonamkung.gcs.R;
 
+import java.text.SimpleDateFormat;
+
 public class Fragment3 extends Fragment {
     @Nullable
     @Override

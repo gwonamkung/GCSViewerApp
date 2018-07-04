@@ -1,6 +1,7 @@
 package com.example.gwonamkung.gcs;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -67,8 +68,9 @@ public class MainActivity2 extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            new Fragment2().setJson(jsonObject.toString());
                             new Fragment1().Companion.json(jsonObject);
+                            new Fragment2().setJson(jsonObject);
+
                             try {
                                 // 이동 방향 및 Heading
                                 lat = jsonObject.getDouble("latitude");
@@ -150,6 +152,7 @@ public class MainActivity2 extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Data"));
         tabLayout.addTab(tabLayout.newTab().setText("Detail Data"));
         tabLayout.addTab(tabLayout.newTab().setText("Log"));
+        tabLayout.setSelectedTabIndicatorColor(Color.GREEN);
         viewPager.setAdapter(new FragmentAdapterJ(getSupportFragmentManager()));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

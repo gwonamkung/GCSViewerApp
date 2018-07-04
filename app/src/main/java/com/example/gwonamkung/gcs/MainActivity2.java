@@ -43,6 +43,9 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
+
+        String ip = getIntent().getStringExtra("ip");
+
         final Fragment3 fragment3 = new Fragment3();
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
@@ -50,7 +53,7 @@ public class MainActivity2 extends AppCompatActivity {
         toast = Toast.makeText(this, message2, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP, 0, 70);
         try {
-            mqttClient = new MqttClient("tcp://106.253.56.122:1883", MqttClient.generateClientId(), null);
+            mqttClient = new MqttClient("tcp://"+ip+":1883", MqttClient.generateClientId(), null);
             mqttClient.setCallback(new MqttCallback() {
                 @Override
                 public void connectionLost(Throwable cause) {
@@ -136,6 +139,9 @@ public class MainActivity2 extends AppCompatActivity {
             });
             mqttClient.connect();
             mqttClient.subscribe("/uav2/pub");
+            if(mqttClient.isConnected()) {
+                Toast.makeText(this, ip + " 에 연결되었습니다.", Toast.LENGTH_SHORT).show();
+            }
         } catch (MqttException e) {
             e.printStackTrace();
         }

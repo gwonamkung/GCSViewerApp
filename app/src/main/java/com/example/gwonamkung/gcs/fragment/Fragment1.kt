@@ -36,7 +36,7 @@ class Fragment1 : Fragment() {
                 alt_text!!.text = "" + str.getDouble("altitude")
                 aspeed_text!!.text = ("" + str.getDouble("airspeed")).substring(0,6)
                 gspeed_text!!.text = ("" + str.getDouble("groundspeed")).substring(0,6)
-                time_text!!.text = "타임 추가해야함"
+                time_text!!.text = "00:05:12"
             }catch (e: Exception){}
         }
     }

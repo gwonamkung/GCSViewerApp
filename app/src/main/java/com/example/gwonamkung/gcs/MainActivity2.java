@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.gwonamkung.gcs.adapter.FragmentAdapterJ;
 import com.example.gwonamkung.gcs.fragment.Fragment1;
 import com.example.gwonamkung.gcs.fragment.Fragment2;
+import com.example.gwonamkung.gcs.fragment.Fragment3;
 import com.example.gwonamkung.gcs.mission.WayPoint;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
@@ -47,6 +48,7 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
+        final Fragment3 fragment3 = new Fragment3();
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("file:///android_asset/www/map.html");
@@ -88,7 +90,7 @@ public class MainActivity2 extends AppCompatActivity {
 
                                 message2 = jsonObject.getString("statustext");
                                 if(!message2.equals("")) {
-                                    System.out.println("123123213123    bb b   "+message2);
+                                    fragment3.getCommand(message2);
                                     toast.setText(message2);
                                     toast.show();
                                 }

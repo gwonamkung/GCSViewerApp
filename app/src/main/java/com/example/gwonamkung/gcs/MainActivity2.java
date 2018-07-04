@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.webkit.WebView;
 import android.widget.Toast;
@@ -15,7 +14,6 @@ import com.example.gwonamkung.gcs.adapter.FragmentAdapterJ;
 import com.example.gwonamkung.gcs.fragment.Fragment1;
 import com.example.gwonamkung.gcs.fragment.Fragment2;
 import com.example.gwonamkung.gcs.fragment.Fragment3;
-import com.example.gwonamkung.gcs.mission.WayPoint;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
@@ -25,9 +23,6 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
     ViewPager viewPager;
@@ -69,8 +64,9 @@ public class MainActivity2 extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            new Fragment2().setJson(jsonObject.toString());
                             new Fragment1().Companion.json(jsonObject);
+                            new Fragment2().setJson(jsonObject);
+
                             try {
                                 // 이동 방향 및 Heading
                                 lat = jsonObject.getDouble("latitude");

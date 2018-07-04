@@ -12,12 +12,12 @@
         android:id="@+id/tabLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@android:color/white"
-        app:layout_constraintVertical_weight="0.5"
+        android:background="#d6d6d6"
         app:layout_constraintBottom_toTopOf="@+id/viewPager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/webView"></android.support.design.widget.TabLayout>
+        app:layout_constraintTop_toBottomOf="@+id/webView"
+        app:layout_constraintVertical_weight="0.5"></android.support.design.widget.TabLayout>
 
     <WebView
         android:id="@+id/webView"

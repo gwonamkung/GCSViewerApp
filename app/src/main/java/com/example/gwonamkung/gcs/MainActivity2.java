@@ -68,7 +68,7 @@ public class MainActivity2 extends AppCompatActivity {
                         @Override
                         public void run() {
                             new Fragment2().setJson(jsonObject.toString());
-//                            new Fragment1().Companion.str(jsonObject.toString());
+                            new Fragment1().Companion.json(jsonObject);
                             try {
                                 // 이동 방향 및 Heading
                                 lat = jsonObject.getDouble("latitude");

@@ -40,6 +40,7 @@ class Fragment1 : Fragment() {
                 gspeed_text!!.text = ("" + str.getDouble("groundspeed")).substring(0,6)
                 battery_text!!.text = str.getDouble("battery_voltage").toString()
                 time_text!!.text = "00:05:12"
+                battery_text!!.text = str.getDouble("battery_voltage").toString()
             }catch (e: Exception){}
         }
     }

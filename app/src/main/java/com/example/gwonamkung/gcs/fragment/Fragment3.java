@@ -12,27 +12,32 @@ import android.view.ViewGroup;
 
 import com.example.gwonamkung.gcs.R;
 import com.example.gwonamkung.gcs.adapter.CommandListAdapter;
+import com.example.gwonamkung.gcs.data.CommandData;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Fragment3 extends Fragment {
     static RecyclerView recyclerView;
     static CommandListAdapter adapter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment3, container, false);
         recyclerView = view.findViewById(R.id.recyclerView);
         adapter = new CommandListAdapter();
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(adapter);
         return view;
     }
 
-    public void getCommand(String command){
+    public void getCommand(String command) {
         try {
-            adapter.getList().add(command);
+            SimpleDateFormat format = new SimpleDateFormat("hh : mm : ss");
+            adapter.getList().add(new CommandData(format.format(new Date().getTime()), command));
             adapter.notifyDataSetChanged();
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
     }
 }

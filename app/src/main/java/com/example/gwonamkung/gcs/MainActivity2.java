@@ -1,13 +1,11 @@
 package com.example.gwonamkung.gcs;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.webkit.WebView;
 import android.widget.Toast;
@@ -16,7 +14,6 @@ import com.example.gwonamkung.gcs.adapter.FragmentAdapterJ;
 import com.example.gwonamkung.gcs.fragment.Fragment1;
 import com.example.gwonamkung.gcs.fragment.Fragment2;
 import com.example.gwonamkung.gcs.fragment.Fragment3;
-import com.example.gwonamkung.gcs.mission.WayPoint;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
@@ -26,9 +23,6 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
     ViewPager viewPager;
@@ -154,7 +148,6 @@ public class MainActivity2 extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Data"));
         tabLayout.addTab(tabLayout.newTab().setText("Detail Data"));
         tabLayout.addTab(tabLayout.newTab().setText("Log"));
-        tabLayout.setSelectedTabIndicatorColor(Color.GREEN);
         viewPager.setAdapter(new FragmentAdapterJ(getSupportFragmentManager()));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

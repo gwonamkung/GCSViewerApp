@@ -126,6 +126,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Battery"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/time_text"
         app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toTopOf="@+id/time_text"

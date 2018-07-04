@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.gwonamkung.gcs.R
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.ArrayList
+import com.example.gwonamkung.gcs.data.CommandData
 
 class CommandListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
-    var list : ArrayList<String> = ArrayList()
+    var list : ArrayList<CommandData> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): RecyclerView.ViewHolder {
         var view = LayoutInflater.from(parent.context).inflate(R.layout.list_layout,parent,false)
@@ -23,11 +21,9 @@ class CommandListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     }
 
     override fun onBindViewHolder(p0: RecyclerView.ViewHolder, position: Int) {
-        var format : SimpleDateFormat
-        format = SimpleDateFormat("hh : mm : ss")
         var view = p0 as ViewHolder
-        view.time_text!!.text = format.format(Date().time)
-        view.command_text!!.text = list.get(position)
+        view.time_text!!.text = list.get(position).time.toString()
+        view.command_text!!.text = list.get(position).message
     }
 
     class ViewHolder(view : View?) : RecyclerView.ViewHolder(view!!){

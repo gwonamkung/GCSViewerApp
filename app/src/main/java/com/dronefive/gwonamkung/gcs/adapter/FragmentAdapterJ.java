@@ -1,12 +1,12 @@
-package com.example.gwonamkung.gcs.adapter;
+package com.dronefive.gwonamkung.gcs.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.example.gwonamkung.gcs.fragment.Fragment1;
-import com.example.gwonamkung.gcs.fragment.Fragment2;
-import com.example.gwonamkung.gcs.fragment.Fragment3;
+import com.dronefive.gwonamkung.gcs.fragment.Fragment1;
+import com.dronefive.gwonamkung.gcs.fragment.Fragment2;
+import com.dronefive.gwonamkung.gcs.fragment.Fragment3;
 
 public class FragmentAdapterJ extends FragmentStatePagerAdapter{
     Fragment1 fragment1 = new Fragment1();

@@ -1,12 +1,12 @@
-package com.example.gwonamkung.gcs.adapter
+package com.dronefive.gwonamkung.gcs.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.example.gwonamkung.gcs.R
-import com.example.gwonamkung.gcs.data.CommandData
+import com.dronefive.gwonamkung.gcs.R
+import com.dronefive.gwonamkung.gcs.data.CommandData
 
 class CommandListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     var list : ArrayList<CommandData> = ArrayList()

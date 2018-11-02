@@ -1,4 +1,4 @@
-package com.example.gwonamkung.gcs
+package com.dronefive.gwonamkung.gcs
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,7 @@ class LoginActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         login_button.setOnClickListener {
-            var intent = Intent(this,MainActivity2::class.java)
+            var intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
             startActivityForResult(intent,111)
         }

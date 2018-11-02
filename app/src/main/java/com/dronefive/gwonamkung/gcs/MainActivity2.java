@@ -1,4 +1,4 @@
-package com.example.gwonamkung.gcs;
+package com.dronefive.gwonamkung.gcs;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,12 +8,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.gwonamkung.gcs.adapter.FragmentAdapterJ;
-import com.example.gwonamkung.gcs.fragment.Fragment1;
-import com.example.gwonamkung.gcs.fragment.Fragment2;
-import com.example.gwonamkung.gcs.fragment.Fragment3;
+import com.dronefive.gwonamkung.gcs.adapter.FragmentAdapterJ;
+import com.dronefive.gwonamkung.gcs.fragment.Fragment1;
+import com.dronefive.gwonamkung.gcs.fragment.Fragment2;
+import com.dronefive.gwonamkung.gcs.fragment.Fragment3;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
@@ -31,6 +32,7 @@ public class MainActivity2 extends AppCompatActivity {
     Context context;
     MqttClient mqttClient;
     Toast toast;
+    Button dd;
     public static String message2;
     public static double lat, lng, heading;
     public static double homeLat, homeLng;
@@ -155,10 +157,10 @@ public class MainActivity2 extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Detail Data"));
         tabLayout.addTab(tabLayout.newTab().setText("Log"));
         viewPager.setAdapter(new FragmentAdapterJ(getSupportFragmentManager()));
+        viewPager.setOffscreenPageLimit(2);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                Toast.makeText(context, tab.getPosition() + 1 + " selected.", Toast.LENGTH_LONG).show();
                 viewPager.setCurrentItem(tab.getPosition());
             }
 

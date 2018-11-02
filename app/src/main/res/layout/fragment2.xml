@@ -70,7 +70,7 @@
         android:id="@+id/mode_text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="init.."
         app:layout_constraintBottom_toBottomOf="@+id/textView7"
         app:layout_constraintStart_toStartOf="@+id/airspeed_text2"
         app:layout_constraintTop_toTopOf="@+id/textView7" />
@@ -79,7 +79,7 @@
         android:id="@+id/airspeed_text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="init.."
         app:layout_constraintBottom_toBottomOf="@+id/textView13"
         app:layout_constraintStart_toStartOf="@+id/ground_text2"
         app:layout_constraintTop_toTopOf="@+id/textView13" />
@@ -88,7 +88,7 @@
         android:id="@+id/ground_text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="init.."
         app:layout_constraintBottom_toBottomOf="@+id/textView14"
         app:layout_constraintStart_toStartOf="@+id/dist_home_text"
         app:layout_constraintTop_toTopOf="@+id/textView14" />
@@ -97,7 +97,7 @@
         android:id="@+id/dist_home_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="init.."
         app:layout_constraintBottom_toBottomOf="@+id/textView15"
         app:layout_constraintStart_toStartOf="@+id/fence_text"
         app:layout_constraintTop_toTopOf="@+id/textView15" />
@@ -107,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="TextView"
+        android:text="init.."
         app:layout_constraintBottom_toBottomOf="@+id/textView16"
         app:layout_constraintEnd_toStartOf="@+id/textView26"
         app:layout_constraintHorizontal_bias="0.5"
@@ -175,7 +175,7 @@
         android:id="@+id/alt_text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="init.."
         app:layout_constraintBottom_toBottomOf="@+id/textView22"
         app:layout_constraintStart_toStartOf="@+id/missiontime_text"
         app:layout_constraintTop_toTopOf="@+id/textView22" />
@@ -184,7 +184,7 @@
         android:id="@+id/missiontime_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="init.."
         app:layout_constraintBottom_toBottomOf="@+id/textView23"
         app:layout_constraintStart_toStartOf="@+id/airtime_text"
         app:layout_constraintTop_toTopOf="@+id/textView23" />
@@ -193,7 +193,7 @@
         android:id="@+id/airtime_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="init.."
         app:layout_constraintBottom_toBottomOf="@+id/textView24"
         app:layout_constraintStart_toStartOf="@+id/mission_text"
         app:layout_constraintTop_toTopOf="@+id/textView24" />
@@ -202,7 +202,7 @@
         android:id="@+id/mission_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="init.."
         app:layout_constraintBottom_toBottomOf="@+id/textView25"
         app:layout_constraintStart_toStartOf="@+id/nofly_text"
         app:layout_constraintTop_toTopOf="@+id/textView25" />
@@ -212,7 +212,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="14dp"
-        android:text="TextView"
+        android:text="init.."
         app:layout_constraintBottom_toBottomOf="@+id/textView26"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

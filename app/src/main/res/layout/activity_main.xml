@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#222222"
-    tools:context=".MainActivity"
+    tools:context="com.dronefive.gwonamkung.gcs.MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <android.support.design.widget.TabLayout

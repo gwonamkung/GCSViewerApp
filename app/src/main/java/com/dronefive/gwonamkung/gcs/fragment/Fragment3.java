@@ -1,4 +1,4 @@
-package com.example.gwonamkung.gcs.fragment;
+package com.dronefive.gwonamkung.gcs.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,9 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.gwonamkung.gcs.R;
-import com.example.gwonamkung.gcs.adapter.CommandListAdapter;
-import com.example.gwonamkung.gcs.data.CommandData;
+import com.dronefive.gwonamkung.gcs.R;
+import com.dronefive.gwonamkung.gcs.adapter.CommandListAdapter;
+import com.dronefive.gwonamkung.gcs.data.CommandData;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

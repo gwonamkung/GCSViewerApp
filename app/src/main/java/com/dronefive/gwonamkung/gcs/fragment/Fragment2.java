@@ -1,4 +1,4 @@
-package com.example.gwonamkung.gcs.fragment;
+package com.dronefive.gwonamkung.gcs.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.gwonamkung.gcs.MainActivity2;
-import com.example.gwonamkung.gcs.R;
+import com.dronefive.gwonamkung.gcs.MainActivity2;
+import com.dronefive.gwonamkung.gcs.R;
 
 import org.json.JSONObject;
 
@@ -41,12 +41,6 @@ public class Fragment2 extends Fragment {
         airtime_text = view.findViewById(R.id.airtime_text);
         mission_text = view.findViewById(R.id.mission_text);
         nofly_text = view.findViewById(R.id.nofly_text);
-        missiontime_text.setText("No mission");
-        mission_text.setText("No mission");
-        nofly_text.setText("No nofly zone");
-        airtime_text.setText("airtime");
-        dist_home_text.setText("dist_home");
-        fence_text.setText("No fence");
         return view;
     }
 
